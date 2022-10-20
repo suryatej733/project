@@ -1,0 +1,240 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./clothes.css" >
+</head>
+<body>
+    <div class="main">
+        <p class="child1"><i>Old Clothes Still can<b> WARM </b> Many People This Winter.</i> </p><br><br>
+    <form>
+
+        <label>NAME : </label>         
+        <input type="text" required="required" name="name" size="15" /> <br> <br>  
+
+        <label>   
+            PHONE NUMBER :  
+        </label>  
+        <input type="text" name="country code"  value="+91" size="2"/>   
+        <input type="text" name="phone" size="10" required/> <br> <br>  
+
+        <label>EMAIL :</label>  
+        <input type="email" id="email" name="email" required/> <br>    
+        <br> <br>  
+
+        <label>ADDRESS :</label>  
+        <br>  
+        <textarea cols="80" rows="5" value="address" required>  
+        </textarea>  
+        <br> <br>  
+
+        <input type="checkbox" id="verify" name="verify" required>
+        <label for="verify">I CONFIRM ALL THE ABOVE DETAILS ARE VALID </label><br>
+
+        <input type="button" value="Submit"/>  
+        
+    </form>
+</div>
+    
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+     <link rel="stylesheet" href="./clothes.css" > 
+
+</head>
+
+<body>
+
+    <div class="main">
+
+        <p class="child1"><i>Old Clothes Still can<b> WARM </b> Many People This Winter.</i> </p><br><br>
+
+    <form>
+
+ 
+
+        <label>NAME : </label>        
+
+        <input type="text" required="required" name="name" id="name" size="15" /> <br> <br>  
+
+ 
+
+        <label>  
+
+            PHONE NUMBER :  
+
+        </label>  
+
+        <input type="text" name="country code"  value="+91" size="2"/>  
+
+        <input type="text" name="phone" size="10" id ="no" required/> <br> <br>  
+
+ 
+
+        <label>EMAIL :</label>  
+
+        <input type="email" id="email" name="email"  id="email" required/> <br>    
+
+        <br> <br>  
+
+ 
+
+        <label>ADDRESS :</label>  
+
+        <br>  
+
+        <textarea cols="80" rows="5" value="address" id="add" required>  
+
+        </textarea>  
+
+        <br> <br>  
+
+ 
+
+        <input type="checkbox" id="verify" name="verify" required>
+
+        <label for="verify">I CONFIRM ALL THE ABOVE DETAILS ARE VALID </label><br>
+
+ 
+
+        <input type="button" id="submit" value="Submit"/>  
+
+       
+
+    </form>
+
+</div>
+
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+ 
+
+    // Your web app's Firebase configuration
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyCC5LMR8gygvbCwi64X2rvTC-mdcJp4Tc0",
+
+      authDomain: "clothes-89d78.firebaseapp.com",
+
+      projectId: "clothes-89d78",
+
+      storageBucket: "clothes-89d78.appspot.com",
+
+      messagingSenderId: "240142484694",
+
+      appId: "1:240142484694:web:2f038f1232d41a8f19f577"
+
+    };
+
+ 
+
+    // Initialize Firebase
+
+    const app = initializeApp(firebaseConfig);
+
+ 
+
+    import{
+
+  getDatabase,
+
+  ref,
+
+  set,
+
+ 
+
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+
+const db = getDatabase();
+
+ 
+
+   var nametext= document.getElementById("name");
+
+    var phonetext = document.getElementById("no");
+
+    var emailtext= document.getElementById("email");
+
+    var addresstext= document.getElementById("add");
+
+    var submitb= document.getElementById("submit")
+
+ 
+
+    function insertdate(){
+
+        set(ref(db,"clothes/"+nametext.value),{
+
+        Name:nametext.value,
+
+        phoneno:phonetext.value,
+
+        Emailid:emailtext.value,
+
+        address:addresstext.value,  
+
+       
+
+        }).then(()=>alert("address registered successfully"))
+
+        .catch((err)=>alert("details are not inserted"+err))
+
+        cleardata();
+
+    }
+
+    function cleardata()
+
+    {
+
+        nametext.value="",
+
+        phonetext.value="";
+
+        emailtext.value="",
+
+        addresstext.value="";
+
+    }
+
+ 
+
+    submitb.addEventListener("click",insertdate);
+
+ 
+
+  </script>    
+
+ 
+
+</body>
+
+</html>

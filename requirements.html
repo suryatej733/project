@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Table</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .head {
+            font-size: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 100;
+            text-align: center;
+            text-decoration: solid;
+            color: antiquewhite;
+            background-color: palevioletred;
+
+        }
+
+        .head {
+            padding: 20px;
+        }
+
+        .body {
+            background-color:skyblue;
+        }
+    </style>
+</head>
+
+<body class="body">
+    <h1 class="head">REQUIREMENTS</h1>
+    <center>
+        <table border="4">
+            <thead>
+                <tr>
+                    <th>Area</th>
+                    <td><input type="text" name="fname" id="fname"></td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Address</th>
+                    <td><input type="text" name="lname" id="lname"></td>
+                </tr>
+                <tr>
+                    <th>Requirements</th>
+                    <td><input type="text" name="email" id="email"></td>
+                </tr>
+                <tr>
+
+                <tr id="btna">
+                    <td colspan="2"><input type="button" name="button" id="btn" value="Add" onclick="AddRow()"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="4" id="show">
+            <thead>
+                <tr>
+                    <th>Area</th>
+                    <th>Address</th>
+                    <th>Requirements</th>
+
+                </tr>
+            </thead>
+        </table>
+    </center>
+
+    <script>
+
+        var list1 = [];
+        var list2 = [];
+        var list3 = [];
+        var list4 = [];
+
+        var n = 1;
+        var x = 0;
+
+        function AddRow() {
+
+            var AddRown = document.getElementById('show');
+            var NewRow = AddRown.insertRow(n);
+
+            list1[x] = document.getElementById("fname").value;
+            list2[x] = document.getElementById("lname").value;
+            list3[x] = document.getElementById("email").value;
+
+
+            var cel1 = NewRow.insertCell(0);
+            var cel2 = NewRow.insertCell(1);
+            var cel3 = NewRow.insertCell(2);
+
+
+            cel1.innerHTML = list1[x];
+            cel2.innerHTML = list2[x];
+            cel3.innerHTML = list3[x];
+
+
+            n++;
+            x++;
+        }
+
+    </script>
+</body>
+
+</html>

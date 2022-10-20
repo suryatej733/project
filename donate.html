@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+
+body {font-family: Arial}
+
+* {box-sizing: border-box;}
+
+ 
+
+input[type=text], select, textarea {
+
+  width: 100%;
+
+  padding: 12px;
+
+  border: 1px solid #ccc;
+
+  border-radius: 4px;
+
+  box-sizing: border-box;
+
+  margin-top: 6px;
+
+  margin-bottom: 16px;
+
+  resize: vertical;
+
+}
+
+ 
+
+input[type=submit] {
+
+  background-color: #04AA6D;
+
+  color: white;
+
+  padding: 12px 20px;
+
+  border: none;
+
+  border-radius: 4px;
+
+  cursor: pointer;
+
+}
+
+ 
+
+input[type=submit]:hover {
+
+  background-color: springgreen;
+
+}
+
+ 
+
+.container {
+
+  border-radius: 5px;
+
+  background-color: azure;
+
+  padding: 20px;
+
+}
+
+h4{
+
+    text-align: right;
+
+}
+
+p{
+
+    text-align: right;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+ 
+
+<h3>Fill The Details To Donate Needy</h3>
+
+ 
+
+<div class="container">
+
+  <form action=" ">
+
+    <label for="name">Name</label>
+
+    <input type="text" id="name" name="firstname" placeholder="Enter donar Name..">
+
+ 
+
+    <label for="phonenumber">Phone Number</label>
+
+    <input type="text" id="phoneno" name="phonenumber" placeholder="Enter Mobile Number">
+
+ 
+
+    <label for="state">State</label>
+
+    <select id="state" name="state">
+
+      <option value="telangana">Telangana</option>
+
+      <option value="andhrapradesh">Andhrapradesh</option>
+
+      <option value="Maharashtra">Maharashtra</option>
+
+      <option value="karnataka">Karnataka</option>
+
+    </select>
+
+    <label>ADDRESS :</label>  
+
+    <br>  
+
+    <textarea cols="80" rows="5" value="address" id="add" required>  
+
+    </textarea>
+
+    <label for="subject">Subject</label>
+
+    <textarea id="subject" name="subject" placeholder="Write to us.." style="height:200px"></textarea>
+
+ 
+
+    <h4><ul>ContactUs....</ul></h4>
+
+    <p>Email:help@fooddonation</p>
+
+        <p>Contact:080-372837832</p>
+
+    <br><br>
+
+    <input type="button" id="submit" value="Submit"/>
+
+  </form>
+
+</div>
+
+<script type="module">
+
+    // Import the functions you need from the SDKs you need
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+
+    // TODO: Add SDKs for Firebase products that you want to use
+
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+ 
+
+    // Your web app's Firebase configuration
+
+    const firebaseConfig = {
+
+      apiKey: "AIzaSyCdaMrAt-rP8FxdQpEgC5GPIVHk5dogXYk",
+
+      authDomain: "food-2d346.firebaseapp.com",
+
+      projectId: "food-2d346",
+
+      storageBucket: "food-2d346.appspot.com",
+
+      messagingSenderId: "195461449960",
+
+      appId: "1:195461449960:web:deec05e1fd05eeeee6a15d"
+
+    };
+
+ 
+
+    // Initialize Firebase
+
+    const app = initializeApp(firebaseConfig);
+
+ 
+
+    import{
+
+  getDatabase,
+
+  ref,
+
+  set,
+
+ 
+
+} from "https://www.gstatic.com/firebasejs/9.6.10/firebase-database.js"
+
+const db = getDatabase();
+
+var nametext= document.getElementById("name");
+
+var phonetext= document.getElementById("phoneno");
+
+var statetext= document.getElementById("state");
+
+var addresstext= document.getElementById("add");
+
+var subtext= document.getElementById("subject");
+
+var submitb= document.getElementById("submit")
+
+ 
+
+function insertdate(){
+
+        set(ref(db,"food/"+nametext.value),{
+
+        Name:nametext.value,
+
+        phoneno:phonetext.value,
+
+        state:statetext.value,
+
+        address:addresstext.value,
+
+        subject:subtext.value
+
+       
+
+        }).then(()=>alert("address registered successful"))
+
+        .catch((err)=>alert("details are not inserted"+err))
+
+        cleardata();
+
+    }
+
+    function cleardata()
+
+    {
+
+        nametext.value="",
+
+        phonetext.value="";
+
+        statetext.value="",
+
+        addresstext.value="";
+
+        subtext.value=""
+
+ 
+
+    }
+
+ 
+
+    submitb.addEventListener("click",insertdate);
+
+ 
+
+  </script>
+
+
+
+
+</body>
+
+</html>
